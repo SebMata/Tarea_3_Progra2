@@ -20,6 +20,7 @@ class Producto {
     int ObtenerID();
     std::string ObtenerNombre();
     int ObtenerExistencia();
+    void ModificarProducto(int idnueva,std::string nombrenuevo,int existencianueva);
 
     friend std::ostream& operator << (std::ostream &o, const Producto *producto);
 };

@@ -28,7 +28,7 @@ class Tienda {
     std::string ObtenerTelefono();
 
     void AgregarProducto(Producto *nuevoProducto);
-    void ModificarProducto(int idnueva,std::string nombrenuevo,int existencianueva);
+    void ModificarProductoTienda(int idPorCambiar,int idnueva,std::string nombrenuevo,int existencianueva);
 
     void GuardarEnStreamBinario(std::ostream *streamSalida);
     void CargarDesdeStreamBinario(std::istream *streamEntrada);

@@ -11,7 +11,7 @@ using namespace Tarea3;
     TEST(Tienda_Test, Escribir_Leer_Archivo_Binario_Test)
     {
 
-        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","25751238");
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
 
         Producto *producto1 = new Producto(1,"Jabon",3);
         tiendaEsperada->AgregarProducto(producto1);
@@ -50,7 +50,7 @@ using namespace Tarea3;
         delete tiendaLeida;
         delete tiendaEsperada;
 
-        std::string esperado = "Walmart\nwalmartgmail\nCartago\n25751238\n1 Jabon 3\n"; 
+        std::string esperado = "Walmart\nwalmartgmail\nCartago\n2575123\n1 Jabon 3\n"; 
         std::string salidaTiendaEsperada = streamSalidaTiendaEsperada.str();
 
         std::cout << salidaTiendaEsperada << std::endl;
@@ -64,6 +64,39 @@ using namespace Tarea3;
         EXPECT_EQ(esperado, salidaTiendaLeidaDeArchivo); 
     }
 
+    TEST(Tienda_Test, Test_ModificarProducto)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","25751238");
+
+        // Act - ejecute la operación
+        Producto *producto1 = new Producto(1,"Jabon",3);
+        tiendaEsperada->AgregarProducto(producto1);
+
+        Producto *producto2 = new Producto(2,"Sandia",6);
+        tiendaEsperada->AgregarProducto(producto2);
+
+        tiendaEsperada->ModificarProductoTienda(2,3,"Banano",5);
+
+        int actual1= producto2->ObtenerID();
+        int esperada1= 3;
+
+        std::string actual2= producto2->ObtenerNombre();
+        std::string esperada2 = "Banano";
+
+        int actual3= producto2->ObtenerExistencia();
+        int esperada3= 5;
+
+        delete tiendaEsperada;
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperada1, actual1);
+        EXPECT_EQ(esperada2, actual2);
+        EXPECT_EQ(esperada3, actual3);
+    }
+
 
     TEST(Tienda_Test, Test_ObtenerInformacion)
     {
@@ -71,7 +104,6 @@ using namespace Tarea3;
 
         // Arrange - configurar el escenario
         Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","25751238");
-
         // Act - ejecute la operación
         std::string actual = tiendaEsperada->ObtenerNombreTienda();
         std::string esperada = "Walmart";

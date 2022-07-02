@@ -51,9 +51,13 @@ void Tienda::AgregarProducto(Producto *nuevoProducto)
     this->productos.push_back(nuevoProducto);
 }
 
-void Tienda::ModificarProducto(int idnueva,std::string nombrenuevo,int existencianueva)
+void Tienda::ModificarProductoTienda(int idPorCambiar,int idnueva,std::string nombrenuevo,int existencianueva)
 {
-    
+    for (Producto *producto: this->productos){
+        if((producto->ObtenerID())==idPorCambiar){
+            producto->ModificarProducto(idnueva,nombrenuevo,existencianueva);
+        }
+    }
 }
 
 void Tienda::GuardarEnStreamBinario(std::ostream *streamSalida)
