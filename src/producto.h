@@ -3,7 +3,6 @@
 
 #include <string>
 
-using namespace std;
 
 class Producto {
 
@@ -13,14 +12,14 @@ class Producto {
     
 
     public:
-    Producto(int id, string nombre, int existencia);
+    Producto(int id, std::string nombre, int existencia);
     Producto();
 
     int ObtenerID();
-    string ObtenerNombre();
+    std::string ObtenerNombre();
     int ObtenerExistencia();
 
-    friend ostream& operator << (ostream &o, const Producto *producto);
+    friend std::ostream& operator << (std::ostream &o, const Producto *producto);
 };
 
 #endif

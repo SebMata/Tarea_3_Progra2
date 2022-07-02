@@ -5,11 +5,9 @@
 #include "producto.h"
 #include <iostream>
 
-using namespace std;
-
 class Tienda {
 
-    vector<Producto *> productos;
+    std::vector<Producto *> productos;
 
     char nombretienda[15];
     char direccionInternet[24]; 
@@ -17,21 +15,21 @@ class Tienda {
     char telefono[8]; 
 
     public:
-    Tienda(string nombretienda,string direccionInternet,string direccionFisica,string telefono);
+    Tienda(std::string nombretienda,std::string direccionInternet,std::string direccionFisica,std::string telefono);
     Tienda();
     ~Tienda();
 
-    string ObtenerNombreTienda();
-    string ObtenerDireccionInternet();
-    string ObtenerDireccionFisica();
-    string ObtenerTelefono();
+    std::string ObtenerNombreTienda();
+    std::string ObtenerDireccionInternet();
+    std::string ObtenerDireccionFisica();
+    std::string ObtenerTelefono();
 
     void AgregarProducto(Producto *nuevoProducto);
 
-    void GuardarEnStreamBinario(ostream *streamSalida);
-    void CargarDesdeStreamBinario(istream *streamEntrada);
+    void GuardarEnStreamBinario(std::ostream *streamSalida);
+    void CargarDesdeStreamBinario(std::istream *streamEntrada);
 
-    friend ostream& operator << (ostream &o, const Tienda *tienda);
+    friend std::ostream& operator << (std::ostream &o, const Tienda *tienda);
 };
 
 #endif

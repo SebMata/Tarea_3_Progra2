@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 
-Producto::Producto(int id, string nombre, int existencia)
+Producto::Producto(int id, std::string nombre, int existencia)
 {
     this->id = id;
     strcpy(this->nombre, nombre.c_str());
@@ -21,7 +21,7 @@ int Producto::ObtenerID()
     return this->id;
 }
 
-string Producto::ObtenerNombre()
+std::string Producto::ObtenerNombre()
 {
     return this->nombre;
 }
@@ -31,7 +31,7 @@ int Producto::ObtenerExistencia()
     return this->existencia;
 }
 
-ostream& operator << (ostream &o, const Producto *producto)
+std::ostream& operator << (std::ostream &o, const Producto *producto)
 {
     o << producto->id << " " << producto->nombre << " " << producto->existencia;  
     return o;
