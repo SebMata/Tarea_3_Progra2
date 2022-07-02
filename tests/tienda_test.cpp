@@ -13,7 +13,7 @@ using namespace Tarea3;
 
         Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","25751238");
 
-        Producto *producto1 = new Producto(1,"Jabón",3);
+        Producto *producto1 = new Producto(1,"Jabon",3);
         tiendaEsperada->AgregarProducto(producto1);
 
         std::ofstream archivoSalida;
@@ -50,7 +50,7 @@ using namespace Tarea3;
         delete tiendaLeida;
         delete tiendaEsperada;
 
-        std::string esperado = "Walmart\nwalmartgmail\nCartago\n25751238\n1 Jabón 3\n"; 
+        std::string esperado = "Walmart\nwalmartgmail\nCartago\n25751238\n1 Jabon 3\n"; 
         std::string salidaTiendaEsperada = streamSalidaTiendaEsperada.str();
 
         std::cout << salidaTiendaEsperada << std::endl;

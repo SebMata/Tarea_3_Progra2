@@ -51,8 +51,18 @@ void Tienda::AgregarProducto(Producto *nuevoProducto)
     this->productos.push_back(nuevoProducto);
 }
 
+void Tienda::ModificarProducto(int idnueva,std::string nombrenuevo,int existencianueva)
+{
+    
+}
+
 void Tienda::GuardarEnStreamBinario(std::ostream *streamSalida)
 {
+    streamSalida->write((char *)nombretienda, sizeof(nombretienda));
+    streamSalida->write((char *)direccionFisica, sizeof(direccionFisica));
+    streamSalida->write((char *)direccionInternet, sizeof(direccionInternet));
+    streamSalida->write((char *)telefono, sizeof(telefono));
+
     for (Producto *producto : this->productos)
     {
         streamSalida->write((char *)producto, sizeof(Producto));
@@ -65,6 +75,12 @@ void Tienda::CargarDesdeStreamBinario(std::istream *streamEntrada)
     int cantidadBytesEnArchivo = streamEntrada->tellg();
     int cantidadProductos = cantidadBytesEnArchivo / sizeof(Producto);
     streamEntrada->seekg( 0, std::ios::beg ); 
+
+    streamEntrada->read((char *)nombretienda, sizeof(nombretienda));
+    streamEntrada->read((char *)direccionFisica, sizeof(direccionFisica));
+    streamEntrada->read((char *)direccionInternet, sizeof(direccionInternet));
+    streamEntrada->read((char *)telefono, sizeof(telefono));
+
     for (int indice = 0; indice < cantidadProductos; indice++)
     {
         Producto *producto = new Producto();
