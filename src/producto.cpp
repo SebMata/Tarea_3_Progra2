@@ -2,6 +2,9 @@
 #include <iostream>
 #include <cstring>
 
+namespace Tarea3
+{
+
 Producto::Producto(int id, std::string nombre, int existencia)
 {
     this->id = id;
@@ -35,4 +38,5 @@ std::ostream& operator << (std::ostream &o, const Producto *producto)
 {
     o << producto->id << " " << producto->nombre << " " << producto->existencia;  
     return o;
+}
 }

@@ -2,6 +2,9 @@
 #include <iostream>
 #include <cstring>
 
+namespace Tarea3
+{
+
 Tienda::Tienda()
 {
 
@@ -84,4 +87,5 @@ std::ostream& operator << (std::ostream &o, const Tienda *tienda)
     }
     
     return o;
+}
 }

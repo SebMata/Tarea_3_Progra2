@@ -5,6 +5,9 @@
 #include "producto.h"
 #include <iostream>
 
+namespace Tarea3
+{
+
 class Tienda {
 
     std::vector<Producto *> productos;
@@ -31,5 +34,6 @@ class Tienda {
 
     friend std::ostream& operator << (std::ostream &o, const Tienda *tienda);
 };
+}
 
 #endif

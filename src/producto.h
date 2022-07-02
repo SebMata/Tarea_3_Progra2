@@ -3,6 +3,8 @@
 
 #include <string>
 
+namespace Tarea3
+{
 
 class Producto {
 
@@ -21,5 +23,6 @@ class Producto {
 
     friend std::ostream& operator << (std::ostream &o, const Producto *producto);
 };
+}
 
 #endif
