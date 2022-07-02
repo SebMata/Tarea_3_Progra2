@@ -16,6 +16,10 @@ class Producto {
     Producto(int id, string nombre, int existencia);
     Producto();
 
+    int ObtenerID();
+    string ObtenerNombre();
+    int ObtenerExistencia();
+
     friend ostream& operator << (ostream &o, const Producto *producto);
 };
 

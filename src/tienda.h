@@ -9,7 +9,7 @@ using namespace std;
 
 class Tienda {
 
-    vector<Producto *> Productos;
+    vector<Producto *> productos;
 
     char nombretienda[15];
     char direccionInternet[24]; 
@@ -18,13 +18,18 @@ class Tienda {
 
     public:
     Tienda(string nombretienda,string direccionInternet,string direccionFisica,string telefono);
+    Tienda();
     ~Tienda();
 
-    void AgregarEmpleado(Producto *nuevoProducto);
+    string ObtenerNombreTienda();
+    string ObtenerDireccionInternet();
+    string ObtenerDireccionFisica();
+    string ObtenerTelefono();
+
+    void AgregarProducto(Producto *nuevoProducto);
 
     void GuardarEnStreamBinario(ostream *streamSalida);
     void CargarDesdeStreamBinario(istream *streamEntrada);
-    void CargarEmpleadoPorPosicionDesdeStreamBinario(istream *streamEntrada, int posicionEmpleado);
 
     friend ostream& operator << (ostream &o, const Tienda *tienda);
 };
