@@ -7,6 +7,32 @@
 
 using namespace Tarea3;
 
+    TEST(Tienda_Test, Test_AgregarProducto)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
+
+        // Act - ejecute la operación
+        Producto *producto1 = new Producto(1,"Jabon",3);
+        tiendaEsperada->AgregarProducto(producto1);
+
+        Producto *producto2 = new Producto(2,"Sandia",6);
+        tiendaEsperada->AgregarProducto(producto2);
+
+        Producto *producto3 = new Producto(3,"Banano",4);
+        tiendaEsperada->AgregarProducto(producto3);
+
+        int actual1= tiendaEsperada->TotalProductos();
+        int esperada1= 3;
+
+        delete tiendaEsperada;
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperada1, actual1);
+    }
+
 
     TEST(Tienda_Test, Escribir_Leer_Archivo_Binario_Test)
     {
@@ -64,12 +90,12 @@ using namespace Tarea3;
         EXPECT_EQ(esperado, salidaTiendaLeidaDeArchivo); 
     }
 
-    TEST(Tienda_Test, Test_ModificarProducto)
+    TEST(Tienda_Test, Test_ModificarProductoTienda)
     {
         /// AAA
 
         // Arrange - configurar el escenario
-        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","25751238");
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
 
         // Act - ejecute la operación
         Producto *producto1 = new Producto(1,"Jabon",3);
@@ -97,20 +123,61 @@ using namespace Tarea3;
         EXPECT_EQ(esperada3, actual3);
     }
 
-
-    TEST(Tienda_Test, Test_ObtenerInformacion)
+    TEST(Tienda_Test, Test_EliminarProducto)
     {
         /// AAA
 
         // Arrange - configurar el escenario
-        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","25751238");
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
+
         // Act - ejecute la operación
-        std::string actual = tiendaEsperada->ObtenerNombreTienda();
-        std::string esperada = "Walmart";
+        Producto *producto1 = new Producto(1,"Jabon",3);
+        tiendaEsperada->AgregarProducto(producto1);
+
+        Producto *producto2 = new Producto(2,"Sandia",6);
+        tiendaEsperada->AgregarProducto(producto2);
+
+        Producto *producto3 = new Producto(3,"Banano",4);
+        tiendaEsperada->AgregarProducto(producto3);
+
+        tiendaEsperada->EliminarProductoTienda(2);
+
+        int actual1= tiendaEsperada->TotalProductos();
+        int esperada1= 2;
 
         delete tiendaEsperada;
 
         // Assert - valide los resultados
-        EXPECT_EQ(esperada, actual);
+        EXPECT_EQ(esperada1, actual1);
+    }
+
+    TEST(Tienda_Test, Test_ObtenerInformacionTienda)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
+
+        // Act - ejecute la operación
+
+        std::string actual1= tiendaEsperada->ObtenerNombreTienda();
+        std::string esperada1 = "Walmart";
+
+        std::string actual2= tiendaEsperada->ObtenerDireccionInternet();
+        std::string esperada2 = "walmartgmail";
+
+        std::string actual3= tiendaEsperada->ObtenerDireccionFisica();
+        std::string esperada3 = "Cartago";
+
+        std::string actual4= tiendaEsperada->ObtenerTelefono();
+        std::string esperada4 = "2575123";
+
+        delete tiendaEsperada;
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperada1, actual1);
+        EXPECT_EQ(esperada2, actual2);
+        EXPECT_EQ(esperada3, actual3);
+        EXPECT_EQ(esperada4, actual4);
     }
     

@@ -60,6 +60,22 @@ void Tienda::ModificarProductoTienda(int idPorCambiar,int idnueva,std::string no
     }
 }
 
+void Tienda::EliminarProductoTienda(int idPorEliminar)
+{
+    int i = 0;
+    for (Producto *producto: this->productos){
+        if((producto->ObtenerID())==idPorEliminar){
+            productos.erase(productos.begin()+i);
+        }
+        i++;
+    }
+}
+
+int Tienda::TotalProductos()
+{
+    return this->productos.size();
+}
+
 void Tienda::GuardarEnStreamBinario(std::ostream *streamSalida)
 {
     streamSalida->write((char *)nombretienda, sizeof(nombretienda));

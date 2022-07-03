@@ -26,10 +26,12 @@ class Tienda {
     std::string ObtenerDireccionInternet();
     std::string ObtenerDireccionFisica();
     std::string ObtenerTelefono();
+    int TotalProductos();
 
+    void EliminarProductoTienda(int idPorEliminar);
     void AgregarProducto(Producto *nuevoProducto);
     void ModificarProductoTienda(int idPorCambiar,int idnueva,std::string nombrenuevo,int existencianueva);
-
+    
     void GuardarEnStreamBinario(std::ostream *streamSalida);
     void CargarDesdeStreamBinario(std::istream *streamEntrada);
 
