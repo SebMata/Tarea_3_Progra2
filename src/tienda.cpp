@@ -67,6 +67,15 @@ void Tienda::ModificarProductoTienda(int idPorCambiar,int idnueva,std::string no
     }
 }
 
+void Tienda::ObtenerProductos()
+{
+    for (Producto *producto: this->productos){
+    
+        std::cout << producto << std::endl;
+    }
+
+}
+
 void Tienda::EliminarProductoTienda(int idPorEliminar)
 {
     int i = 0;

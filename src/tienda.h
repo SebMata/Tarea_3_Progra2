@@ -27,6 +27,7 @@ class Tienda {
     std::string ObtenerDireccionFisica();
     std::string ObtenerTelefono();
     int TotalProductos();
+    void ObtenerProductos();
 
     void EliminarProductoTienda(int idPorEliminar);
     void AgregarProducto(Producto *nuevoProducto);
