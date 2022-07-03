@@ -178,7 +178,7 @@ using namespace Tarea3;
         EXPECT_EQ(esperada4, actual4);
     }
 
-    TEST(Calculadora_Test, Test_Excepcion_Producto_No_Existe)
+    TEST(Tienda_Test, Test_Excepcion_Producto_No_Existe)
     {
         /// AAA
 
