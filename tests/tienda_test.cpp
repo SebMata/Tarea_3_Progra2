@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "./../src/tienda.h"
+#include "./../src/ExcepcionProductoNoExiste.h"
 
 using namespace Tarea3;
 
@@ -79,14 +80,10 @@ using namespace Tarea3;
         std::string esperado = "Walmart\nwalmartgmail\nCartago\n2575123\n1 Jabon 3\n"; 
         std::string salidaTiendaEsperada = streamSalidaTiendaEsperada.str();
 
-        std::cout << salidaTiendaEsperada << std::endl;
-        
-
         EXPECT_EQ(esperado, salidaTiendaEsperada);
 
         std::string salidaTiendaLeidaDeArchivo = streamSalidaTiendaEsperada.str();
 
-        std::cout << salidaTiendaLeidaDeArchivo << std::endl;
         EXPECT_EQ(esperado, salidaTiendaLeidaDeArchivo); 
     }
 
@@ -180,4 +177,36 @@ using namespace Tarea3;
         EXPECT_EQ(esperada3, actual3);
         EXPECT_EQ(esperada4, actual4);
     }
+
+    TEST(Calculadora_Test, Test_Excepcion_Producto_No_Existe)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
+
+        // Act - ejecute la operación
+        Producto *producto1 = new Producto(1,"Jabon",3);
+        tiendaEsperada->AgregarProducto(producto1);
+
+        Producto *producto2 = new Producto(2,"Sandia",6);
+        tiendaEsperada->AgregarProducto(producto2);
+
+        Producto *producto3 = new Producto(3,"Banano",4);
+        tiendaEsperada->AgregarProducto(producto3);
+
+        EXPECT_THROW({
+            tiendaEsperada->EliminarProductoTienda(4);
+        }, ExcepcionProductoNoExiste);
+
+        EXPECT_THROW({
+            tiendaEsperada->ModificarProductoTienda(5,3,"Banano",5);
+        }, ExcepcionProductoNoExiste);
+
+        delete tiendaEsperada;
+
+        // Assert - valide los resultados
+    }
+
+    
     

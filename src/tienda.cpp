@@ -1,4 +1,5 @@
 #include "tienda.h"
+#include "ExcepcionProductoNoExiste.h"
 #include <iostream>
 #include <cstring>
 
@@ -53,21 +54,32 @@ void Tienda::AgregarProducto(Producto *nuevoProducto)
 
 void Tienda::ModificarProductoTienda(int idPorCambiar,int idnueva,std::string nombrenuevo,int existencianueva)
 {
+    int a = 0;
     for (Producto *producto: this->productos){
         if((producto->ObtenerID())==idPorCambiar){
             producto->ModificarProducto(idnueva,nombrenuevo,existencianueva);
+            a = 1;
         }
+    }
+
+    if(a==0){
+        throw ExcepcionProductoNoExiste();
     }
 }
 
 void Tienda::EliminarProductoTienda(int idPorEliminar)
 {
     int i = 0;
+    int a = 0;
     for (Producto *producto: this->productos){
         if((producto->ObtenerID())==idPorEliminar){
             productos.erase(productos.begin()+i);
+            a = 1;
         }
         i++;
+    }
+    if(a==0){
+        throw ExcepcionProductoNoExiste();
     }
 }
 
