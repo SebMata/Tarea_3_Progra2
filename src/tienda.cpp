@@ -49,20 +49,20 @@ std::string Tienda::ObtenerTelefono()
 
 void Tienda::AgregarProducto(Producto *nuevoProducto)
 {
-    this->productos.push_back(nuevoProducto);
+    this->productos.push_back(nuevoProducto);  
 }
 
 void Tienda::ModificarProductoTienda(int idPorCambiar,int idnueva,std::string nombrenuevo,int existencianueva)
 {
-    int a = 0;
+    int ejecutado = 0;
     for (Producto *producto: this->productos){
         if((producto->ObtenerID())==idPorCambiar){
             producto->ModificarProducto(idnueva,nombrenuevo,existencianueva);
-            a = 1;
+            ejecutado = 1;
         }
     }
 
-    if(a==0){
+    if(ejecutado==0){
         throw ExcepcionProductoNoExiste();
     }
 }
@@ -78,16 +78,16 @@ void Tienda::ObtenerProductos()
 
 void Tienda::EliminarProductoTienda(int idPorEliminar)
 {
-    int i = 0;
-    int a = 0;
+    int indice = 0;
+    int ejecutado = 0;
     for (Producto *producto: this->productos){
         if((producto->ObtenerID())==idPorEliminar){
-            productos.erase(productos.begin()+i);
-            a = 1;
+            productos.erase(productos.begin()+indice);
+            ejecutado = 1;
         }
-        i++;
+        indice++;
     }
-    if(a==0){
+    if(ejecutado==0){
         throw ExcepcionProductoNoExiste();
     }
 }
