@@ -7,7 +7,6 @@
 
 namespace Tarea3
 {
-
 class Tienda {
 
     std::vector<Producto *> productos;

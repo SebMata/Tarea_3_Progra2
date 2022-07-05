@@ -34,6 +34,28 @@ using namespace Tarea3;
         EXPECT_EQ(esperada1, actual1);
     }
 
+    TEST(Tienda_Test, Test_OperadorTienda)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaEsperada = new Tienda("Walmart","walmartgmail","Cartago","2575123");
+
+        // Act - ejecute la operación
+        Producto *producto1 = new Producto(1,"Jabon",3);
+        tiendaEsperada->AgregarProducto(producto1);
+
+        std::ostringstream streamSalida {};
+
+        streamSalida << tiendaEsperada;
+
+        std::string esperado = "Walmart\nwalmartgmail\nCartago\n2575123\n1 Jabon 3\n"; 
+        std::string actual = streamSalida.str();
+        delete tiendaEsperada;
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+    }
 
     TEST(Tienda_Test, Escribir_Leer_Archivo_Binario_Test)
     {

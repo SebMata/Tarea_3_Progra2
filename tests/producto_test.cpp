@@ -32,3 +32,21 @@ using namespace Tarea3;
         EXPECT_EQ(esperada2, actual2);
         EXPECT_EQ(esperada3, actual3);
     }
+
+    TEST(Producto_Test, Test_OperadorProducto)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Producto *producto1 = new Producto(1,"Jabon",3);
+
+        std::ostringstream streamSalida {};
+
+        streamSalida << producto1;
+
+        std::string esperado = "1 Jabon 3";
+        std::string actual = streamSalida.str();
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+    }
