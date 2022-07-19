@@ -14,10 +14,10 @@ using namespace Tarea3;
         // Arrange - configurar el escenario
         Producto *producto1 = new Producto(1,"Jabon",3);
 
-        producto1->ModificarProducto(2,"Manzana",4);
+        producto1->ModificarProducto("Manzana",4);
 
         int actual1= producto1->ObtenerID();
-        int esperada1= 2;
+        int esperada1= 1;
 
         std::string actual2= producto1->ObtenerNombre();
         std::string esperada2 = "Manzana";

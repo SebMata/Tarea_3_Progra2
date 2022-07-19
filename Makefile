@@ -10,6 +10,7 @@ all:
 	mkdir -p bin/include
 	cp src/tienda.h ./bin/include
 	cp src/producto.h ./bin/include
+	cp src/ExcepcionProductoNoExiste.h ./bin/include
 	
 test:
 	mkdir -p obj

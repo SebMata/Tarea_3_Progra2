@@ -123,10 +123,10 @@ using namespace Tarea3;
         Producto *producto2 = new Producto(2,"Sandia",6);
         tiendaEsperada->AgregarProducto(producto2);
 
-        tiendaEsperada->ModificarProductoTienda(2,3,"Banano",5);
+        tiendaEsperada->ModificarProductoTienda(2,"Banano",5);
 
         int actual1= producto2->ObtenerID();
-        int esperada1= 3;
+        int esperada1= 2;
 
         std::string actual2= producto2->ObtenerNombre();
         std::string esperada2 = "Banano";
@@ -222,7 +222,7 @@ using namespace Tarea3;
         }, ExcepcionProductoNoExiste);
 
         EXPECT_THROW({
-            tiendaEsperada->ModificarProductoTienda(5,3,"Banano",5);
+            tiendaEsperada->ModificarProductoTienda(5,"Banano",5);
         }, ExcepcionProductoNoExiste);
 
         delete tiendaEsperada;

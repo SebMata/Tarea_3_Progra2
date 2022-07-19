@@ -34,9 +34,8 @@ int Producto::ObtenerExistencia()
     return this->existencia;
 }
 
-void Producto::ModificarProducto(int idnueva,std::string nombrenuevo,int existencianueva)
+void Producto::ModificarProducto(std::string nombrenuevo,int existencianueva)
 {
-    this->id = idnueva;
     strcpy(this->nombre, nombrenuevo.c_str());
     this->existencia = existencianueva;
 }

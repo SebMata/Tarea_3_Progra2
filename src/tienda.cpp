@@ -8,7 +8,11 @@ namespace Tarea3
 
 Tienda::Tienda()
 {
-
+    std::string strtemp = "";
+    strcpy(this->nombretienda, strtemp.c_str());
+    strcpy(this->direccionInternet, strtemp.c_str());
+    strcpy(this->direccionFisica, strtemp.c_str());
+    strcpy(this->telefono, strtemp.c_str());
 }
 
 Tienda::Tienda(std::string nombretienda,std::string direccionInternet,std::string direccionFisica,std::string telefono)
@@ -52,12 +56,12 @@ void Tienda::AgregarProducto(Producto *nuevoProducto)
     this->productos.push_back(nuevoProducto);  
 }
 
-void Tienda::ModificarProductoTienda(int idPorCambiar,int idnueva,std::string nombrenuevo,int existencianueva)
+void Tienda::ModificarProductoTienda(int idPorCambiar,std::string nombrenuevo,int existencianueva)
 {
     int ejecutado = 0;
     for (Producto *producto: this->productos){
         if((producto->ObtenerID())==idPorCambiar){
-            producto->ModificarProducto(idnueva,nombrenuevo,existencianueva);
+            producto->ModificarProducto(nombrenuevo,existencianueva);
             ejecutado = 1;
         }
     }
@@ -114,7 +118,8 @@ void Tienda::CargarDesdeStreamBinario(std::istream *streamEntrada)
 {
     streamEntrada->seekg( 0, std::ios::end );
     int cantidadBytesEnArchivo = streamEntrada->tellg();
-    int cantidadProductos = cantidadBytesEnArchivo / sizeof(Producto);
+    int informacionTienda= cantidadBytesEnArchivo-sizeof(nombretienda)-sizeof(direccionFisica)-sizeof(direccionInternet)-sizeof(telefono);
+    int cantidadProductos = (cantidadBytesEnArchivo-informacionTienda) / sizeof(Producto);
     streamEntrada->seekg( 0, std::ios::beg ); 
 
     streamEntrada->read((char *)nombretienda, sizeof(nombretienda));
